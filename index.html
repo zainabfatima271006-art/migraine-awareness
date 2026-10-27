@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Clear, source-based educational information about migraine symptoms, possible triggers, self-care, and when to seek medical help.">
+  <meta name="theme-color" content="#f4f8fb">
+  <title>Migraine Guide | Clear, Reliable Health Education</title>
+  <style>
+    :root {
+      --ink: #183247;
+      --muted: #526779;
+      --brand: #176b73;
+      --brand-dark: #10535a;
+      --soft: #eaf4f4;
+      --paper: #ffffff;
+      --page: #f4f8fb;
+      --line: #d9e5eb;
+      --warning-bg: #fff5e8;
+      --warning-line: #a64b12;
+      --focus: #f2b544;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(24, 50, 71, .07);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: var(--brand-dark); text-underline-offset: 3px; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+    .skip-link {
+      position: absolute; left: -9999px; top: 8px;
+      background: var(--paper); padding: .7rem 1rem; z-index: 10;
+    }
+    .skip-link:focus { left: 8px; }
+    .wrap { width: min(1100px, calc(100% - 32px)); margin-inline: auto; }
+    header {
+      background: rgba(255,255,255,.92);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar {
+      min-height: 76px; display: flex; align-items: center;
+      justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-block: 12px;
+    }
+    .brand { display: flex; gap: 11px; align-items: center; font-weight: 800; letter-spacing: -.02em; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 13px;
+      display: grid; place-items: center; background: var(--soft); color: var(--brand);
+    }
+    nav { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+    nav a { font-size: .94rem; font-weight: 650; text-decoration: none; }
+    .hero { padding-block: 54px 34px; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 30px; align-items: center; }
+    .eyebrow { color: var(--brand-dark); text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; font-weight: 800; }
+    h1, h2, h3 { line-height: 1.2; letter-spacing: -.03em; }
+    h1 { font-size: clamp(2.3rem, 5vw, 4rem); margin: 12px 0 18px; max-width: 720px; }
+    h2 { font-size: clamp(1.65rem, 3vw, 2.25rem); margin: 0 0 12px; }
+    h3 { font-size: 1.13rem; margin: 0 0 8px; }
+    p { margin: 0 0 14px; }
+    .lead { color: var(--muted); font-size: 1.12rem; max-width: 64ch; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 46px; padding: 10px 17px; border-radius: 12px;
+      background: var(--brand); color: white; font-weight: 750; text-decoration: none;
+      border: 2px solid var(--brand);
+    }
+    .button:hover { background: var(--brand-dark); }
+    .button.secondary { background: transparent; color: var(--brand-dark); }
+    .hero-art {
+      background: linear-gradient(145deg, #e5f2f4, #f8fbfc);
+      border: 1px solid var(--line); border-radius: 28px; padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .hero-art svg { display: block; width: 100%; height: auto; }
+    .notice {
+      border-left: 5px solid var(--brand); background: var(--soft);
+      padding: 15px 17px; border-radius: 0 12px 12px 0; margin-top: 24px;
+    }
+    .notice strong { display: block; margin-bottom: 3px; }
+    main section { padding-block: 34px; scroll-margin-top: 20px; }
+    .section-intro { color: var(--muted); max-width: 70ch; margin-bottom: 22px; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card {
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 22px; box-shadow: 0 4px 16px rgba(24,50,71,.035);
+    }
+    .icon {
+      width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center;
+      color: var(--brand-dark); background: var(--soft); margin-bottom: 14px; font-size: 1.25rem;
+    }
+    .card p, .card li { color: var(--muted); }
+    ul { padding-left: 1.25rem; margin: 10px 0 0; }
+    li { margin: 0 0 7px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .warning {
+      background: var(--warning-bg); border: 1px solid #f0d0ac;
+      border-left: 5px solid var(--warning-line); border-radius: 14px; padding: 22px;
+    }
+    .warning h2 { font-size: 1.45rem; }
+    .warning p, .warning li { color: #56351f; }
+    .source-list li { margin-bottom: 12px; }
+    .disclaimer { background: #edf2f6; border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+    footer { margin-top: 24px; padding: 28px 0 38px; border-top: 1px solid var(--line); color: var(--muted); font-size: .92rem; }
+    .small { color: var(--muted); font-size: .9rem; }
+    @media (max-width: 760px) {
+      .hero-grid, .two-col { grid-template-columns: 1fr; }
+      .hero { padding-top: 36px; }
+      .hero-art { max-width: 480px; margin-inline: auto; }
+      .cards { grid-template-columns: 1fr; }
+      .topbar { align-items: flex-start; }
+      nav { gap: 10px 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header>
+    <div class="wrap topbar">
+      <div class="brand" aria-label="Migraine Guide home">
+        <span class="brand-mark" aria-hidden="true">✚</span>
+        <span>Migraine Guide</span>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="#about">About migraine</a>
+        <a href="#symptoms">Symptoms</a>
+        <a href="#self-care">Self-care</a>
+        <a href="#urgent-help">When to get help</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Understand · Prepare · Get support</div>
+          <h1>Clear information about migraine.</h1>
+          <p class="lead">Migraine is more than an ordinary headache. Learn about common symptoms, possible triggers, everyday steps that may help, and when to seek medical care.</p>
+          <div class="actions">
+            <a class="button" href="#about">Explore the guide</a>
+            <a class="button secondary" href="#urgent-help">Know the warning signs</a>
+          </div>
+          <div class="notice">
+            <strong>Important to know</strong>
+            Migraine affects people differently. This page offers general education, not a diagnosis or personal treatment plan.
+          </div>
+        </div>
+        <div class="hero-art">
+          <svg viewBox="0 0 420 330" role="img" aria-labelledby="art-title art-desc" xmlns="http://www.w3.org/2000/svg">
+            <title id="art-title">Original illustration for migraine awareness</title>
+            <desc id="art-desc">A simple line illustration of a person resting with eyes closed, with calm abstract shapes around the head.</desc>
+            <rect x="8" y="8" width="404" height="314" rx="24" fill="#f7fbfc"/>
+            <circle cx="315" cy="73" r="31" fill="#d7ebed"/>
+            <circle cx="83" cy="240" r="44" fill="#e4edf8"/>
+            <path d="M124 270c5-44 33-70 86-70s81 26 86 70" fill="#6b9fa5" opacity=".22"/>
+            <path d="M142 270c7-47 27-70 68-70s61 23 68 70" fill="#176b73"/>
+            <ellipse cx="210" cy="134" rx="64" ry="76" fill="#d6a889"/>
+            <path d="M147 126c-8-44 17-77 62-80 42-3 72 25 71 67-16-10-28-26-33-42-19 24-52 39-100 39z" fill="#183247"/>
+            <path d="M183 145q12 10 24 0M224 145q12 10 24 0" fill="none" stroke="#183247" stroke-width="4" stroke-linecap="round"/>
+            <path d="M204 169q9 7 18 0" fill="none" stroke="#9a5e51" stroke-width="3" stroke-linecap="round"/>
+            <path d="M154 117q-17 13-12 32M266 117q17 13 12 32" fill="none" stroke="#d6a889" stroke-width="8" stroke-linecap="round"/>
+            <path d="M110 98l-17-10m29-8-11-18m214 44 18-7m-29-19 12-18" stroke="#6b9fa5" stroke-width="4" stroke-linecap="round"/>
+            <path d="M84 138h22m-11-11v22M321 167h22m-11-11v22" stroke="#e0ad4f" stroke-width="4" stroke-linecap="round"/>
+            <rect x="122" y="278" width="176" height="15" rx="7.5" fill="#d9e9ec"/>
+          </svg>
+          <p class="small" style="margin:10px 4px 0">Original decorative illustration created with SVG shapes; no external photo used.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <h2>What is migraine?</h2>
+        <p class="section-intro">Migraine is a neurological condition that can cause recurring attacks. Head pain may be throbbing and moderate to severe, but symptoms vary; some people experience other symptoms as well.</p>
+        <div class="cards">
+          <article class="card">
+            <div class="icon" aria-hidden="true">◉</div>
+            <h3>More than head pain</h3>
+            <p>An attack may also involve nausea, vomiting, or sensitivity to light, sound, or smells.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">⌁</div>
+            <h3>Different for each person</h3>
+            <p>Not everyone has the same symptoms or warning signs. Some people experience aura, such as visual changes or tingling.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">♡</div>
+            <h3>Support is available</h3>
+            <p>A healthcare professional can assess recurring or severe headaches and discuss suitable treatment options.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="symptoms">
+      <div class="wrap">
+        <h2>Common symptoms</h2>
+        <p class="section-intro">Symptoms can differ from one attack to another. These examples are educational and cannot confirm whether someone has migraine.</p>
+        <div class="two-col">
+          <article class="card">
+            <h3>During an attack, someone may have:</h3>
+            <ul>
+              <li>Throbbing or pulsing head pain, sometimes on one side</li>
+              <li>Nausea or vomiting</li>
+              <li>Sensitivity to light or sound</li>
+              <li>Pain that gets worse with routine movement</li>
+              <li>Tiredness or difficulty concentrating</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Some people experience aura:</h3>
+            <ul>
+              <li>Flashing lights, zigzag lines, or other visual changes</li>
+              <li>Tingling or pins-and-needles sensations</li>
+              <li>Temporary difficulty speaking</li>
+            </ul>
+            <p class="small">New, sudden, or unusual neurological symptoms need urgent medical assessment rather than being assumed to be migraine.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="self-care">
+      <div class="wrap">
+        <h2>Everyday steps that may help</h2>
+        <p class="section-intro">These general habits may help some people manage migraine. They do not replace medical advice, and no single routine works for everyone.</p>
+        <div class="cards">
+          <article class="card">
+            <div class="icon" aria-hidden="true">☾</div>
+            <h3>Keep a regular routine</h3>
+            <p>Try to keep sleep and meal times reasonably consistent, and avoid skipping meals where possible.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">⌁</div>
+            <h3>Notice personal patterns</h3>
+            <p>A private diary of timing, symptoms, sleep, meals, and possible triggers may help you discuss patterns with a clinician. Triggers vary by person.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">☷</div>
+            <h3>Rest and hydrate</h3>
+            <p>During an attack, some people find a quiet, dark room, rest, and drinking fluids helpful.</p>
+          </article>
+        </div>
+        <div class="notice">
+          <strong>About medicines and supplements</strong>
+          Do not start, stop, or change medicines or supplements based on this website. Ask a qualified healthcare professional or pharmacist what is appropriate for your situation.
+        </div>
+      </div>
+    </section>
+
+    <section id="urgent-help">
+      <div class="wrap">
+        <div class="warning">
+          <h2>When to seek urgent medical help</h2>
+          <p>Get emergency medical help if a headache is sudden and extremely severe, or occurs with new weakness, trouble speaking, confusion, loss of vision, a seizure, high fever with a stiff neck, or after a head injury. These can be signs of a serious condition.</p>
+          <p>Seek medical advice if headaches are new, worsening, unusually long, happening often, or interfering with everyday life. Use your local emergency number or emergency service when symptoms are urgent.</p>
+          <p class="small"><strong>Do not wait for this website to respond to urgent symptoms.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="wrap">
+        <h2>Trusted sources for further reading</h2>
+        <p class="section-intro">This starter page summarises general information from established public health resources. Check the source pages for details and updates.</p>
+        <div class="card">
+          <ul class="source-list">
+            <li><a href="https://www.nhs.uk/conditions/migraine/" target="_blank" rel="noopener noreferrer">NHS — Migraine</a><br><span class="small">Symptoms, possible triggers, self-care, and when to get help.</span></li>
+            <li><a href="https://medlineplus.gov/migraine.html" target="_blank" rel="noopener noreferrer">MedlinePlus — Migraine</a><br><span class="small">Patient-friendly information from the U.S. National Library of Medicine.</span></li>
+            <li><a href="https://www.ninds.nih.gov/health-information/disorders/migraine" target="_blank" rel="noopener noreferrer">National Institute of Neurological Disorders and Stroke — Migraine</a><br><span class="small">Further information about migraine symptoms and care.</span></li>
+            <li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener noreferrer">Google Search Central — Helpful, reliable, people-first content</a><br><span class="small">Guidance for publishing responsible and useful information online.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="disclaimer">
+      <div class="wrap">
+        <div class="disclaimer">
+          <h2>Medical disclaimer</h2>
+          <p>This website is an educational student project. It is not a medical service and does not provide diagnosis, personalised medical advice, or treatment recommendations. Information may not cover every situation and can change as medical knowledge develops. Always consult a qualified healthcare professional for personal concerns. In an emergency, contact local emergency services.</p>
+          <p class="small">Content review: educational draft prepared using the sources linked above. It has not been reviewed by a healthcare professional. Before public launch, ask a qualified clinician to review the medical content.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p><strong>Migraine Guide</strong> · Student-built health education project</p>
+      <p>Illustrations on this page are original inline SVG artwork. If you add photos later, use your own images or check the exact licence and attribution requirements before publishing.</p>
+      <p>© <span id="year"></span> Migraine Guide. Educational use only.</p>
+    </div>
+  </footer>
+  <script>
+    // Small progressive enhancement: update the footer year automatically.
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
